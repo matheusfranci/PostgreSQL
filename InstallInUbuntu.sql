@@ -51,3 +51,6 @@ psql -d database_name
 
 -- Verificando onde está logado após acessar a instância
 \conninfo
+
+-- Verificando status do serviço do banco
+sudo systemctl status postgresql.service

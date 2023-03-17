@@ -15,4 +15,4 @@ show data_directory;
 
 -- restart de parâmetros no postgresql
 SELECT pg_reload_conf();                  -- Dinâmicos
-systemctl restart postgresql-13           -- Não dinâmicos
+systemctl restart postgresql-service           -- Não dinâmicos

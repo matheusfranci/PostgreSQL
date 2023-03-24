@@ -52,3 +52,19 @@ REVOKE ALTER SYSTEM ON OBJECT_NAME TO USUÁRIO;
 -- Ao adicionar a cláusula "WITH GRANT OPTION" ao final do comando, o usuário no qual o provilégio foi concedido poderá conceder o mesmo privilégio a outros usuários
 -- segue exemplo:
 GRANT ALTER SYSTEM ON OBJECT_NAME TO USUÁRIO WITH GRANT OPTION;
+
+
+-- Criação de usuário
+CREATE USER oriondba;
+
+-- Criação de role
+CREATE ROLE orionrole;
+
+-- Criação de usuário com senha
+CREATE USER rm with password 'rm';
+
+-- Criar usuário com limite de tempo
+CREATE USER rm WITH PASSWORD 'rm' VALID UNTIL '2024-01-01';
+
+-- Checar todos os usuários e privilégios
+\du

@@ -1,5 +1,5 @@
 -- Atualizando o SO
-sudo apt update
+sudo apt-get update && sudo apt-get upgrade
 
 -- Instalando o postgresql
 sudo apt install postgresql postgresql-contrib

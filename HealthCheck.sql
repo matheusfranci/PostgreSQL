@@ -41,3 +41,10 @@ cd ..
 
 ./checkup -h nomedohost -p 5432 --username postgres --dbname database1 --project database1 -e 1 --pdf 
 #--pdf é opcional mas ele gera um relatório em pdf que é melhor para analisar.
+
+# Desinstalando o postgresql 15 instalado anteriormente
+# Listar postgresql instalados no host
+apt list --installed | grep postgresql
+
+# Desinstalando de fato
+apt purge postgresql-15

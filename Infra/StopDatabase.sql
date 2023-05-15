@@ -72,4 +72,5 @@ locate postgresql.conf
 -- Parada smart é similar mas em via de regra é a default
 /usr/lib/postgresql/14/bin/pg_ctl stop -D /var/lib/postgresql/14/main -m smart
 
-
+-- Stop pg15
+/usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/15/main/ stop

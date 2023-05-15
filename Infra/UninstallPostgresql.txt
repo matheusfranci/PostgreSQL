@@ -1,0 +1,10 @@
+sudo apt-get --purge remove postgresql
+sudo apt-get purge postgresql*
+sudo apt-get --purge remove postgresql postgresql-doc postgresql-common
+
+
+-- Verificando clusters instalados no servidor
+apt list --installed | grep postgresql
+
+-- Remover instalação específica
+apt purge postgresql-15 -- Informe a versão

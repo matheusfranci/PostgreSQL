@@ -10,7 +10,7 @@ xxxxxxxxxxxx        docker_webserver    "bash -c 'airflow ..."   2 months ago   
 xxxxxxxxxxxx        redis:5.0.5         "docker-entrypoint..."   2 months ago        Up 2 months             xxxx/tcp                 airflow_redis
 xxxxxxxxxxxx        postgres:9          "docker-entrypoint..."   2 months ago        Up 2 months             0.0.0.0:xxxx->xxxx/tcp   airflow_postgres
 
--- Entrabdo no container
+-- Entrando no container
 docker exec -it airflow_postgres bash
 docker exec -it nomedocontainer bash
 

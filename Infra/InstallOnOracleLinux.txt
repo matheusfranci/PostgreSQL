@@ -1,0 +1,20 @@
+-- Verificando pacotes a serem atualizados
+$ yum check-update
+
+-- Atualizando
+$ yum update
+
+-- Verificando informações do postgres
+yum info postgresql-server
+
+-- Instalando
+yum -y install postgresql-server
+
+-- Iniciando  o banco de dados
+service postgresql initdb
+
+-- Iniciando o cluster
+service postgresql start
+
+-- Colocando o cluster para iniciar junto com o servidor
+chkconfig postgresql on

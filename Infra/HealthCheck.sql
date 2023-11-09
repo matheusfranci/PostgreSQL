@@ -3,6 +3,7 @@ Ubuntu/Debian:
 
 sudo apt-get update -y
 sudo apt-get install -y git postgresql coreutils jq golang  #Esse instala o postgresql 15 e é necessário
+sudo apt-get install -y git coreutils jq golang  #sem postgresql
 
 # Optional (to generate PDF/HTML reports) é bom ter e deve ser criado em um repositório segue exemplo:
 # /var/lib/postgresql/orion/assessment/  Não se esqueça de permissionar ao usuário postgres caso o diretório seja criado com o root

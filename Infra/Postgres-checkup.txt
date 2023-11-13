@@ -1,0 +1,44 @@
+# Instalando programas necessários para execução do checkup
+sudo yum install -y git coreutils jq golang
+
+# Necessário para geração de relatórios em pdf
+sudo yum install -y pandoc
+
+# Download de pacote direto da web
+wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+# Compactação do mesmo
+tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+# Movendo toda estrutura criada para diretório personalizado
+sudo mv wkhtmltox/bin/wkhtmlto* /usr/local/bin
+
+# Instalação de mais dependências
+sudo yum install -y libpng libjpeg openssl icu libX11 libXext libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
+
+# Clonando repositório do github
+git clone https://gitlab.com/postgres-ai/postgres-checkup.git
+
+# Acesse o diretório /pghrep
+cd /var/lib/postgresql/orion/assessment/postgres-checkup/
+cd ./pghrep
+
+# Execute o comando abaixo
+make main
+
+# Retorne ao diretório do postgres-checkup
+cd /var/lib/postgresql/orion/assessment/postgres-checkup
+
+# Execute o postgres-checkup
+./checkup -h BRSRV080O -p 5432 --username postgres --dbname postgres --project qualquer_nome_sera_criado_na_hora -e 1 --pdf 
+
+OBS: Acima segue a string de conexão
+
+dict do comando:
+./checkup -- Chama o checkup
+-h BRSRV080O -p 5432 --username postgres --dbname postgres -- Host, porta, usuário e banco
+--project -- ficam dentro da pasta artifacts
+-e 1 --pdf -- Gera arquivo em pdf
+
+# Também podemos chamar o checkup passando o caminho inteiro
+./var/lib/postgresql/orion/assessment/postgres-checkup/checkup -h BRSRV080O -p 5432 --username postgres --dbname postgres --project qualquer_nome_sera_criado_na_hora -e 1 --pdf

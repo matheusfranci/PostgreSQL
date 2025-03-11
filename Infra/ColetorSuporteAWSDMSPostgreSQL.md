@@ -44,7 +44,7 @@ O script realiza as seguintes ações:
     * **Problemas Potenciais:** Tipos de dados não suportados, tabelas sem chaves primárias, colunas TEXT/JSONB com NOT NULL, consultas de longa duração, triggers e views.
 5.  **Saída:**
     * Exibe o nome do arquivo HTML gerado.
-
+```bash
 \set VERBOSITY terse
 \pset footer off
 
@@ -1235,3 +1235,4 @@ and n.nspname = :'v_owner';
 \echo Output report dms_support_script_postgres.html can be found in current directory.
 \echo
 \echo
+```

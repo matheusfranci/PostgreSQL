@@ -1,6 +1,49 @@
--- Usage:
--- psql -h psql -h <host_name> -p <port> -U <user_name> -d <database> -f awsdms_support_collector_postgres.sql
---
+Com certeza! Vamos formatar esse script SQL para coletar informações de suporte do AWS DMS para PostgreSQL em Markdown, e sugerir um nome apropriado.
+
+## Coletando Informações de Suporte do AWS DMS para PostgreSQL
+
+Este script SQL coleta informações detalhadas sobre um banco de dados PostgreSQL para auxiliar na solução de problemas com o AWS Database Migration Service (DMS).
+
+### Uso
+
+Execute o script utilizando `psql` com os seguintes parâmetros:
+
+```bash
+psql -h <host_name> -p <port> -U <user_name> -d <database> -f awsdms_support_collector_postgres.sql
+```
+
+**Parâmetros:**
+
+* `-h <host_name>`: Nome do host do banco de dados.
+* `-p <port>`: Porta do banco de dados.
+* `-U <user_name>`: Nome do usuário para conexão.
+* `-d <database>`: Nome do banco de dados.
+* `-f awsdms_support_collector_postgres.sql`: Caminho para o script SQL.
+
+### Descrição
+
+O script realiza as seguintes ações:
+
+1.  **Informações Gerais:**
+    * Exibe informações sobre a versão do script, propósito e instruções.
+    * Solicita o nome do esquema a ser migrado/replicado e o usuário do PostgreSQL para conexão do DMS.
+2.  **Verificações de Versão:**
+    * Determina a versão principal do PostgreSQL.
+    * Verifica se o banco de dados está em um ambiente RDS.
+3.  **Geração de Relatório HTML:**
+    * Cria um arquivo HTML (`dms_support_script_postgres.html`) com os resultados das consultas.
+    * Inclui um índice com links para as seções do relatório.
+4.  **Coleta de Dados:**
+    * **Configuração do Banco de Dados:** Nome, locale, versão, sistema operacional, host, tipo (RDS/não-RDS), parâmetros, slots de replicação, alta disponibilidade e extensões.
+    * **Detalhes de Tamanho:** Tamanho do banco de dados, tamanhos de esquemas, tamanhos de tabelas e objetos maiores.
+    * **Carga do Banco de Dados:** Taxa de geração de WAL, estatísticas de carga e checkpoints.
+    * **Carga de Tabelas:** Tabelas com mais alterações DML, inserções, atualizações e exclusões.
+    * **Detalhes de Tabelas:** Views materializadas, contagem de tipos de objetos e tipos de dados, identidade de réplica e artefatos do DMS.
+    * **Informações de Arquivamento:** Modo de arquivamento e detalhes relacionados.
+    * **Permissões:** Privilégios do sistema e concessões de tabelas.
+    * **Problemas Potenciais:** Tipos de dados não suportados, tabelas sem chaves primárias, colunas TEXT/JSONB com NOT NULL, consultas de longa duração, triggers e views.
+5.  **Saída:**
+    * Exibe o nome do arquivo HTML gerado.
 
 \set VERBOSITY terse
 \pset footer off

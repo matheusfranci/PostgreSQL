@@ -8,15 +8,15 @@ Para criar um novo schema, utilize o seguinte comando:
 
 ### Comando
 
-\`\`\`sql
+```sql
 CREATE SCHEMA nome_do_schema;
-\`\`\`
+```
 
 ### Exemplo
 
-\`\`\`sql
+```sql
 CREATE SCHEMA schemaname;
-\`\`\`
+```
 
 ### Descrição
 
@@ -28,15 +28,15 @@ Para deletar um schema existente, utilize o seguinte comando:
 
 ### Comando
 
-\`\`\`sql
+```sql
 DROP SCHEMA nome_do_schema;
-\`\`\`
+```
 
 ### Exemplo
 
-\`\`\`sql
+```sql
 DROP SCHEMA schemaname;
-\`\`\`
+```
 
 ### Descrição
 

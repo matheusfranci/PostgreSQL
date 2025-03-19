@@ -1,50 +1,47 @@
---
--- Script: Gerenciamento de Schemas no PostgreSQL
--- Descrição: Este script fornece exemplos de como criar, deletar, definir o search_path e mover tabelas entre schemas no PostgreSQL.
---
+# Gerenciamento de Schemas no PostgreSQL
 
---
--- Criar Schema
---
--- Comando:
--- CREATE SCHEMA nome_do_schema;
---
--- Descrição: Cria um novo schema no banco de dados.
---
+Este documento fornece exemplos de como criar, deletar, definir o `search_path` e mover tabelas entre schemas no PostgreSQL.
+
+## Criar Schema
+
+Para criar um novo schema, utilize o seguinte comando:
+
+### Comando
+
+\`\`\`sql
+CREATE SCHEMA nome_do_schema;
+\`\`\`
+
+### Exemplo
+
+\`\`\`sql
 CREATE SCHEMA schemaname;
+\`\`\`
 
---
--- Deletar Schema
---
--- Comando:
--- DROP SCHEMA nome_do_schema;
---
--- Descrição: Deleta um schema existente no banco de dados.
---
+### Descrição
+
+Este comando cria um novo schema com o nome especificado.
+
+## Deletar Schema
+
+Para deletar um schema existente, utilize o seguinte comando:
+
+### Comando
+
+\`\`\`sql
+DROP SCHEMA nome_do_schema;
+\`\`\`
+
+### Exemplo
+
+\`\`\`sql
 DROP SCHEMA schemaname;
+\`\`\`
 
---
--- Definir o Schema Padrão (search_path)
---
--- Comando:
--- SET search_path TO schema1, schema2;
---
--- Descrição: Define a ordem de busca dos schemas. Quando um objeto (tabela, função, etc.) é referenciado sem especificar o schema, o PostgreSQL irá procurá-lo nos schemas listados no search_path, na ordem especificada.
---
--- Exemplo:
--- SET search_path TO public, my_schema;
---
-SET search_path TO SCHEMA1, SCHEMA2;
+### Descrição
 
---
--- Mover Tabela para Outro Schema
---
--- Comando:
--- ALTER TABLE schema_origem.nome_da_tabela SET SCHEMA nome_schema_destino;
---
--- Descrição: Move uma tabela de um schema para outro.
---
--- Exemplo:
--- ALTER TABLE old_schema.my_table SET SCHEMA new_schema;
---
-ALTER TABLE SCHEMA.SUA_TABELA SET SCHEMA NOME_SCHEMA_DESTINO;
+Este comando remove o schema com o nome especificado.
+
+## Definir o Schema Padrão (`search_path`)
+
+O `search_path` define a ordem em que o PostgreSQL procura por objetos (tabelas, funções, etc.) quando o schema não é especificado na consulta

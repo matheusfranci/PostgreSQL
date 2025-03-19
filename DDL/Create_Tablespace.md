@@ -1,6 +1,5 @@
 Feito! Aqui está o arquivo Markdown ajustado com a substituição solicitada:
 
-```markdown
 # Criação de Diretório, Tablespace, Banco de Dados e Índice no PostgreSQL
 
 Este documento descreve como criar um diretório para armazenar dados do banco de dados, configurar permissões, criar uma tablespace, um banco de dados associado a essa tablespace, e demonstrar a criação e remoção de um índice no PostgreSQL.

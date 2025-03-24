@@ -1,8 +1,8 @@
-# B-tree indexes bloat (requires pgstattuple; expensive)
+### B-tree indexes bloat (requires pgstattuple; expensive)
 
-# https://github.com/dataegret/pg-utils/tree/master/sql
-# pgstattuple extension required
-# WARNING: without index name/mask query will read all available indexes which could cause I/O spikes
+### https://github.com/dataegret/pg-utils/tree/master/sql
+### pgstattuple extension required
+### WARNING: without index name/mask query will read all available indexes which could cause I/O spikes
 
 # Cálculo de Desperdício de Espaço em Índices B-tree no PostgreSQL
 

@@ -1,8 +1,3 @@
-Certo, parceiro de programação, vamos analisar este script SQL que identifica e gera comandos para remover índices inválidos no PostgreSQL.
-
-**Arquivo Markdown (remover\_indices\_invalidos.md):**
-
-```markdown
 # Remover Índices Inválidos no PostgreSQL
 
 ## Descrição

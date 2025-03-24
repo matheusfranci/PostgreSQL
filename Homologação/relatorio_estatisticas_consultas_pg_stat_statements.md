@@ -1,6 +1,12 @@
---Slowest queries report (requires pg_stat_statements)
+# Relatório Detalhado de Estatísticas de Consultas do pg_stat_statements no PostgreSQL
 
---Original version – Data Egret: https://github.com/dataegret/pg-utils/blob/master/sql/global_reports/query_stat_total.sql
+## Descrição
+
+Este script SQL gera um relatório abrangente de estatísticas de consultas do `pg_stat_statements` no PostgreSQL. Ele inclui informações sobre tempo de execução, tempo de I/O, número de chamadas, número de linhas, usuário, banco de dados e consulta. O script também normaliza as consultas para agrupar consultas semelhantes e adapta as colunas selecionadas com base na versão do PostgreSQL.
+
+## Query
+
+```sql
 \if :postgres_dba_pgvers_13plus
 with pg_stat_statements_slice as (
   select *
@@ -319,3 +325,50 @@ from statements_readable
 order by pos
 );
 \endif
+```
+
+## Explicação Detalhada
+
+O script é dividido em várias CTEs (Common Table Expressions) para organizar e processar os dados:
+
+1.  **`pg_stat_statements_slice`**:
+    * Seleciona dados da visão `pg_stat_statements`.
+    * Filtra os resultados para incluir apenas o banco de dados atual ou todos os bancos de dados se o banco de dados atual for `postgres`.
+
+2.  **`pg_stat_statements_normalized`**:
+    * Normaliza as consultas para agrupar consultas semelhantes, substituindo literais e variáveis por placeholders (`?` e `$N`).
+    * Remove comentários e quebras de linha.
+
+3.  **`totals`**:
+    * Calcula os totais de tempo de execução, tempo de I/O, número de chamadas e número de linhas.
+
+4.  **`_pg_stat_statements`**:
+    * Agrupa as consultas normalizadas por banco de dados, usuário e hash da consulta normalizada.
+    * Seleciona a consulta mais curta para cada grupo.
+    * Calcula a soma do tempo de execução, tempo de I/O, número de chamadas e número de linhas para cada grupo.
+
+5.  **`totals_readable`**:
+    * Formata os totais para leitura humana.
+
+6.  **`statements`**:
+    * Calcula as porcentagens de tempo de execução, tempo de I/O, número de chamadas e número de linhas para cada consulta.
+    * Calcula o tempo médio de execução e o tempo médio de I/O por chamada.
+    * Filtra as consultas para incluir apenas aquelas que representam uma porcentagem significativa do tempo total, chamadas ou linhas.
+    * Adiciona uma linha de resumo para as consultas restantes.
+
+7.  **`statements_readable`**:
+    * Formata as estatísticas das consultas para leitura humana.
+
+8.  **Consulta Principal**:
+    * Gera um relatório que inclui os totais formatados, as estatísticas das consultas formatadas e informações sobre a configuração do `pg_stat_statements`.
+    * Inclui um aviso se algum banco de dados precisar de `VACUUM`.
+
+## Considerações
+
+* O script adapta as colunas selecionadas com base na versão do PostgreSQL, usando `total_exec_time` e `total_plan_time` para PostgreSQL 13+ e `total_time` para versões anteriores.
+* A normalização das consultas ajuda a agrupar consultas semelhantes, mesmo que tenham literais ou variáveis diferentes.
+* O relatório inclui porcentagens e tempos médios para facilitar a identificação de consultas problemáticas.
+* O aviso de `VACUUM` ajuda a garantir que as estatísticas sejam precisas.
+* O script é projetado para ser executado como um script SQL autônomo.
+* O resultado é formatado para ser lido em um terminal ou enviado por e-mail.
+* O script é muito útil para monitorar e otimizar o desempenho de consultas no PostgreSQL.

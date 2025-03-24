@@ -43,5 +43,3 @@ Esta query pode ser usada para:
 * É importante analisar as queries dos processos bloqueados e bloqueadores para entender a causa do bloqueio.
 * Em ambientes de produção, bloqueios prolongados podem afetar a disponibilidade e o desempenho do banco de dados.
 * A função `pg_blocking_pids()` retorna um array, por isso o uso do `ANY` na condição de junção.
-
-```

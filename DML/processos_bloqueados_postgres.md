@@ -1,8 +1,3 @@
-Certo, vamos documentar essa query que identifica processos bloqueados no PostgreSQL.
-
-**Arquivo Markdown (processos\_bloqueados\_postgres.md):**
-
-```markdown
 # Identificar Processos Bloqueados no PostgreSQL
 
 ## Descrição

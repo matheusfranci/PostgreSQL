@@ -1,9 +1,12 @@
---[EXP] Alignment padding: how many bytes can be saved if columns are reordered?
+# Estimar Desperdício de Alinhamento de Colunas no PostgreSQL
 
--- TODO: not-yet-analyzed tables – show a warning (cannot get n_live_tup -> cannot get total bytes)
--- TODO: NULLs
--- TODO: simplify, cleanup
--- TODO: chunk_size 4 or 8
+## Descrição
+
+Este script SQL estima o espaço desperdiçado devido ao alinhamento de colunas em tabelas do PostgreSQL e sugere uma ordem de colunas otimizada para reduzir esse desperdício. Ele considera o tipo de dados, o tamanho dos dados e o alinhamento das colunas para calcular o espaço desperdiçado e sugere uma nova ordem de colunas que minimiza o desperdício.
+
+## Query
+
+```sql
 with recursive constants as (
   select 8 as chunk_size
 ), columns as (
@@ -195,5 +198,40 @@ select
 from result r1
 order by table_bytes desc
 ;
+```
 
+## Explicação Detalhada (Continuação)
+
+* **`constants` CTE**: Define uma constante `chunk_size` de 8 bytes, usada para calcular o alinhamento.
+* **`columns` CTE**:
+    * Recupera informações sobre as colunas das tabelas do usuário.
+    * Calcula o deslocamento (`_shift`) e o grupo de ordenação alternativo (`alt_order_group`) para cada coluna, com base no tipo de dados e no alinhamento.
+* **`alt_columns` CTE**:
+    * Gera uma ordem alternativa para as colunas, agrupando-as por `alt_order_group`.
+* **`combined_columns` CTE**:
+    * Combina as colunas originais e as colunas com ordem alternativa.
+* **`analyze_alignment` CTE**:
+    * Analisa o alinhamento das colunas e calcula o espaço desperdiçado devido ao preenchimento (`padding`).
+    * Utiliza recursão para processar todas as colunas de cada tabela.
+* **`result_pre` CTE**:
+    * Calcula o espaço total desperdiçado para cada tabela.
+    * Recupera informações sobre o número de tuplas e o tamanho da tabela.
+* **`result_both` CTE**:
+    * Calcula o espaço desperdiçado total estimado para cada tabela.
+* **`result` CTE**:
+    * Calcula a diferença entre o espaço desperdiçado na ordem original e na ordem alternativa.
+    * Calcula a porcentagem de espaço desperdiçado.
+* **Consulta Principal**:
+    * Formata os resultados para exibição.
+    * Exibe o nome da tabela, o tamanho da tabela, um comentário (se a tabela contiver colunas `VARLENA`), o espaço desperdiçado estimado e a ordem de colunas sugerida.
+    * Ordena os resultados pelo tamanho da tabela em ordem decrescente.
+
+## Considerações
+
+* Este script é complexo e pode levar tempo para ser executado em bancos de dados grandes.
+* A ordem de colunas sugerida pode não ser ideal em todos os casos.
+* O script considera apenas o alinhamento de colunas. Outros fatores podem afetar o espaço desperdiçado.
+* A query realiza uma estimativa do tamanho desperdiçado.
+* A dica do reordenamento das colunas é dada apenas para tabelas que possuem desperdício.
+* As informações das tabelas do sistema, `information_schema.columns`, `pg_type`, `pg_namespace`, `pg_class`, `pg_stat_user_tables` são utilizadas para calcular o tamanho dos dados, o tipo, e outras informações necessárias para realizar a estimativa do desperdício.
 

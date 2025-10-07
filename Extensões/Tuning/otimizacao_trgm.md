@@ -143,6 +143,3 @@ O PostgreSQL deixou de realizar o **Full Table Scan (Sequential Scan)** e passou
   * **Performance:** O `Execution Time` de **45171.668 ms** (aproximadamente 45 segundos) caiu para **0.047 ms**, tornando a consulta **quase instantânea**.
 
 <!-- end list -->
-
-```
-```

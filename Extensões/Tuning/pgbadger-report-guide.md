@@ -98,3 +98,4 @@ pgbadger -f stderr -o /pg01/pgsql17_data/reports/report_02.html /pg01/pgsql17_da
 ```
 
 O relatório estará disponível no arquivo no drive https://drive.google.com/file/d/1wBEAqbljeujAJzQYvoetgg2XTyLwJhAG/view?usp=drive_link
+Faça download e abra no navegador.

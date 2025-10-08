@@ -97,4 +97,4 @@ Execute o `pgBadger`, especificando o formato dos logs (`-f stderr`), o arquivo 
 pgbadger -f stderr -o /pg01/pgsql17_data/reports/report_02.html /pg01/pgsql17_data/log/postgresql-*.log
 ```
 
-O relatório estará disponível no arquivo `/pg01/pgsql17_data/reports/report_02.html`.
+O relatório estará disponível no arquivo no drive https://drive.google.com/file/d/1wBEAqbljeujAJzQYvoetgg2XTyLwJhAG/view?usp=drive_link

@@ -1,9 +1,3 @@
-Que excelente procedimento de teste\! Ele demonstra a instalação e o uso prático da extensão **`pg_hint_plan`**, que permite forçar o planejador de consultas (o *optimizer*) do PostgreSQL a usar um plano específico.
-
-Aqui está a formatação didática em Markdown, dividida em etapas claras:
-
------
-
 # Procedimento de Teste: Instalação e Uso do `pg_hint_plan`
 
 Este guia detalha a instalação da extensão `pg_hint_plan` e demonstra seu uso para forçar um plano de execução de consulta específico (Index Scan) no PostgreSQL.

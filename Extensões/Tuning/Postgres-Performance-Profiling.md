@@ -1,5 +1,3 @@
-Aqui está o procedimento formatado em Markdown, com foco na didática e organização, ideal para documentação no GitHub.
-
 # 📊 Guia de Instalação e Configuração para Monitoramento Avançado no PostgreSQL
 
 Este guia detalha a instalação e configuração das extensões **`pg_stat_kcache`** e **`pg_profile`**, juntamente com o agendador **`pg_cron`**, para realizar um monitoramento completo e gerar relatórios de performance (reports) do seu banco de dados PostgreSQL.

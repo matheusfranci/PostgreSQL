@@ -75,6 +75,13 @@ sudo chown postgres:postgres /archives /archives/wal
 sudo chmod 700 /archives /archives/wal
 ```
 
+Para habilitar e configurar o arquivamento de WAL (Write-Ahead Log), os seguintes parâmetros no arquivo postgresql.conf precisam ser modificados:
+```ìnit
+# Configurações de Arquivamento (Archiving)
+archive_mode = on           # Habilita o arquivamento contínuo
+archive_command = 'cp %p /archives/wal/%f'  # Comando para arquivar os segmentos WAL. O caminho /archives/wal/ deve existir e ter permissões (como você já fez na etapa 4).
+```
+
 ### 5\. Criação e Verificação de Tablespaces
 
 As *tablespaces* permitem separar fisicamente dados e índices em diferentes locais do disco.

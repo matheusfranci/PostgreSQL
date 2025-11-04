@@ -34,7 +34,6 @@ Antes de iniciar, crie os diretórios que serão usados para armazenar dados e �
 
 | Comando | Descrição |
 | :--- | :--- |
-| `mkdir -p /var/lib/pgsql/17/data/tbs_dados` | Cria o diretório de dados (se não existir). |
 | `chown postgres:postgres /data/tbs_data` | Define `postgres` como proprietário do diretório de dados. |
 | `chown postgres:postgres /index/tbs_index` | Define `postgres` como proprietário do diretório de índices. |
 | `chmod 700 /data/tbs_data` | Permissão estrita (apenas o proprietário pode acessar). |

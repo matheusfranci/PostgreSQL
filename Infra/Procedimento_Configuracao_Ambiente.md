@@ -90,7 +90,7 @@ As *tablespaces* permitem separar fisicamente dados e índices em diferentes loc
 
     ```sql
     CREATE TABLESPACE tbs_data LOCATION '/data/tbs_data';
-    CREATE TABLESPACE tbs_index LOCATION '/data/tbs_index';
+    CREATE TABLESPACE tbs_index LOCATION '/index/tbs_index';
     ```
 
 2.  **Verificação (no psql):**
@@ -102,7 +102,7 @@ As *tablespaces* permitem separar fisicamente dados e índices em diferentes loc
     | Nome da Tablespace | Proprietário | Localização |
     | :--- | :--- | :--- |
     | `tbs_data` | `postgres` | `/data/tbs_data` |
-    | `tbs_index` | `postgres` | `/data/tbs_index` |
+    | `tbs_index` | `postgres` | `/index/tbs_index` |
 
 ### 6\. Criação de Usuário Proprietário (Owner) e Banco de Dados
 
@@ -224,7 +224,3 @@ Crie objetos no *schema* `sentinelapp`, direcionando explicitamente a tabela e o
     )
     TABLESPACE tbs_data; -- Tabela (dados) vai para a tbs_data
     ```
-
------
-
-Qual seria o **próximo passo** que você gostaria de detalhar neste guia de teste, como a configuração do arquivamento WAL no `postgresql.conf`?

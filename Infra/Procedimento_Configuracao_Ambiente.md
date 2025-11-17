@@ -1,9 +1,3 @@
-Com certeza\! Transformei seu procedimento de configuração e teste no PostgreSQL em um guia didático e bem estruturado em Markdown.
-
-Aqui está o sumário e o procedimento detalhado:
-
------
-
 ## 📄 Sumário do Procedimento PostgreSQL
 
 Este guia abrange as etapas essenciais para configurar um novo ambiente PostgreSQL, desde a preparação do sistema de arquivos até a criação de tabelas e índices em *tablespaces* dedicadas.

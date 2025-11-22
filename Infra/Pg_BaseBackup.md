@@ -8,6 +8,31 @@
 rm -rf /var/lib/pgsql/17/data/*
 rm -rf /data/tbs_data/*
 rm -rf /data/tbs_index/*
+
+# Também pode optar por renomear mas para isso é necessário ter certeza que há espaço suficiente para dois de cada, seguem comandos:
+# Mover o atual para um nome de backup
+mv /var/lib/pgsql/17/data /var/lib/pgsql/17/data_OLD_$(date +%F_%H%M)
+
+# Recriar a pasta original vazia para receber o restore
+mkdir /var/lib/pgsql/17/data
+
+# Mover Tablespace DATA
+mv /data/tbs_data /data/tbs_data_OLD_$(date +%F_%H%M)
+mkdir /data/tbs_data
+
+# Mover Tablespace INDEX
+mv /data/tbs_index /data/tbs_index_OLD_$(date +%F_%H%M)
+mkdir /data/tbs_index
+
+# Ajustar dono
+chown postgres:postgres /var/lib/pgsql/17/data
+chown postgres:postgres /data/tbs_data
+chown postgres:postgres /data/tbs_index
+
+# Ajustar modo (apenas dono lê/escreve)
+chmod 700 /var/lib/pgsql/17/data
+chmod 700 /data/tbs_data
+chmod 700 /data/tbs_index
 ```
 
 #### Passo 2: Restaurar o Base Backup (Fundamental)

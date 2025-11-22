@@ -23,16 +23,6 @@ mkdir /data/tbs_data
 # Mover Tablespace INDEX
 mv /data/tbs_index /data/tbs_index_OLD_$(date +%F_%H%M)
 mkdir /data/tbs_index
-
-# Ajustar dono
-chown postgres:postgres /var/lib/pgsql/17/data
-chown postgres:postgres /data/tbs_data
-chown postgres:postgres /data/tbs_index
-
-# Ajustar modo (apenas dono lê/escreve)
-chmod 700 /var/lib/pgsql/17/data
-chmod 700 /data/tbs_data
-chmod 700 /data/tbs_index
 ```
 
 #### Passo 2: Restaurar o Base Backup (Fundamental)

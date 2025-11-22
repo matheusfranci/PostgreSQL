@@ -118,3 +118,4 @@ chmod 600 $PGDATA/postgresql.auto.conf
 1.  **Verifique os logs imediatamente:**
     `tail -f /var/lib/pgsql/17/data/log/postgresql-....log`
       * Você deve ver mensagens como: *consistent recovery state reached* e *database system is ready to accept connections*.
+      * Por último remova os arquivos .old do seu datadir rm backup_label.old tablespace_map.old
